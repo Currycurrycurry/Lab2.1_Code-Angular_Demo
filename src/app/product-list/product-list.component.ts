@@ -13,6 +13,11 @@ export class ProductListComponent {
   share() {
     window.alert('The product has been shared!');
   }
+
+  // 为什么由父组件来？
+  onNotify() {
+    window.alert('You will be notified when the product goes on sale');
+  }
 }
 
 

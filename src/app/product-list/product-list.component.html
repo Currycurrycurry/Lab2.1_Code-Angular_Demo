@@ -1,5 +1,31 @@
 <h2>Products</h2>
+<!-- 把数组的index索引赋给productId变量
+  让路由器控制一个link元素
+-->
+<div *ngFor="let product of products; index as productId">
+    <h3>
+        <a [title]="product.name + ' details'"
 
+        [routerLink]="['/products', productId]">
+            {{ product.name }}
+        </a>
+    </h3>
+
+    <p *ngIf="product.description">
+        Description: {{product.description}}
+    </p>
+
+    <button (click)="share()">
+        Share
+    </button>
+
+    <app-product-alerts
+            [product]="product"
+            (notify)="onNotify()">
+    </app-product-alerts>
+
+
+</div>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
