@@ -5,6 +5,7 @@ ENV PORT=4200 \
 
 # 安装express和angular/cli
 RUN npm update
+RUN npm init -y
 RUN npm install --save-prod express \
   && npm install --save-prod @angular/cli
 # 创建app目录
@@ -13,8 +14,8 @@ RUN mkdir -p /app
 COPY . /app
 WORKDIR /app
 
-# 安装依赖,构建程序,这里由于我需要反向代理到子目录，所以添加了base-href参数 --base-href /manage/
-RUN npm install && ng build --prod
+# 安装依赖,构建程序,这里由于我需要反向代理到子目录，所以添加了base-href参数 --base-href /manage/ && ng build --prod
+RUN npm install
 
 EXPOSE ${PORT}
 
